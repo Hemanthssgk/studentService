@@ -34,11 +34,11 @@ public class StudentController {
     }
 
     // this will create a file inside a container. mount that folder to host machine directory
-    // then file is persisted on to host machien
+    // then file is persisted on to host machine
     @PostMapping("/createFile")
     public String createfile()
     {
-        File file = new File("/home/hema.txt");
+        File file = new File("/home/abc/hema.txt");
         boolean status;
         try {
           status  = file.createNewFile();

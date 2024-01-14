@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile # if we give any other name then we can give that name here.
     ports: # this will bind the ports when the container is running.
       - "8081:8081"
+    volumes:
+      - D:\baba\studentService\dockerMount:/home/abc
   database: # this can be any name, with this name a container is launched.
     image: mysql # as i have given mysql, docker will pull from docker hub if image is not found in local.
     environment: # here we are passing the environment variables to the database.
