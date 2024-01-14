@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 @RestController
@@ -29,6 +31,31 @@ public class StudentController {
     {
         StudentDto studentDto =studentService.saveStudent(student);
         return ResponseEntity.ok(studentDto);
+    }
+
+    // this will create a file inside a container. mount that folder to host machine directory
+    // then file is persisted on to host machien
+    @PostMapping("/createFile")
+    public String createfile()
+    {
+        File file = new File("/home/hema.txt");
+        boolean status;
+        try {
+          status  = file.createNewFile();
+            if (status)
+            {
+                return "created";
+            }
+            else
+            {
+                return ("Failed");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "failed";
+        }
+
+
     }
 
     @DeleteMapping("/{id}")
