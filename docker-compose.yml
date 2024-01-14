@@ -1,0 +1,16 @@
+version: "1"
+
+services:
+  studentservice: # this can be any name, with this name a container is launched.
+    build: # this will build the image and also it will create the container when we use docker compose up
+      context: . # this will say to docker where to find the docker file path
+      dockerfile: Dockerfile # if we give any other name then we can give that name here.
+    ports: # this will bind the ports when the container is running.
+      - "8081:8081"
+  database: # this can be any name, with this name a container is launched.
+    image: mysql # as i have given mysql, docker will pull from docker hub if image is not found in local.
+    environment: # here we are passing the environment variables to the database.
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
